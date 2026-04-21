@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Khan — Technology & Business Leader</title>
+<meta name="description" content="Amir Khan is a London-based Technology and Business Leader who builds revenue systems, scales digital products, and drives growth at the intersection of AI, SaaS, and emerging technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ── CSS Variables ── */
+:root {
+  --bg: #F8F6F1;
+  --bg-alt: #F1EDE4;
+  --ink: #1A1714;
+  --ink-mid: #4A4540;
+  --ink-soft: #8A8078;
+  --accent: #C17B2E;
+  --accent-light: #F0E2CB;
+  --white: #FFFFFF;
+  --nav-h: 68px;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --border: rgba(0,0,0,0.10);
+  --shadow-soft: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-accent: 0 4px 20px rgba(193,123,46,0.12);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ── Utility ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.section-pad { padding: 96px 0; }
+.bg-alt { background: var(--bg-alt); }
+.bg-dark { background: var(--ink); }
+.section-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 36px);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.section-intro {
+  color: var(--ink-mid);
+  max-width: 560px;
+  margin-bottom: 48px;
+  font-size: 15px;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════
+   1. NAV
+   ════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex; align-items: center;
+  padding: 0 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(248,246,241,0.82);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex; gap: 32px;
+  margin-left: auto;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-mid);
+  transition: color 0.25s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--ink);
+}
+.nav-links a:hover::after, .nav-links a.active::after {
+  width: 100%;
+}
+.nav-chat-btn {
+  font-size: 13px; font-weight: 600;
+  color: var(--white);
+  background: var(--accent);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  transition: background 0.25s, transform 0.2s;
+  white-space: nowrap;
+}
+.nav-chat-btn:hover {
+  background: #a8691f;
+  transform: translateY(-1px);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  padding: 4px 0;
+  margin-left: auto;
+  z-index: 110;
+}
+.hamburger span {
+  display: block; width: 100%; height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.35s, opacity 0.25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(248,246,241,0.97);
+  backdrop-filter: blur(12px);
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border);
+  flex-direction: column; gap: 16px;
+  z-index: 99;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 16px; font-weight: 500;
+  color: var(--ink-mid);
+  padding: 8px 0;
+}
+.mobile-menu a:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav { padding: 0 20px; }
+}
+
+/* ════════════════════════════════════════
+   2. HERO
+   ════════════════════════════════════════ */
+.hero {
+  min-height: calc(100vh - var(--nav-h));
+  padding-top: calc(var(--nav-h) + 48px);
+  display: flex; align-items: center;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  color: var(--accent);
+  font-style: italic;
+}
+.hero-sub {
+  color: var(--ink-mid);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+.cert-pills {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 32px;
+}
+.cert-pill {
+  font-size: 12px; font-weight: 500;
+  color: var(--ink-mid);
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 600;
+  color: var(--white);
+  background: var(--ink);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-primary:hover { background: #2d2a26; transform: translateY(-1px); }
+.btn-ghost {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.25s, transform 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* Hero image */
+.hero-image-wrap {
+  position: relative;
+}
+.hero-image {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius);
+  object-fit: cover;
+  background: var(--bg-alt);
+}
+.hero-image-fallback {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, var(--accent-light), var(--bg-alt));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 72px;
+  color: var(--accent);
+  opacity: 0.6;
+}
+.hero-stat {
+  position: absolute;
+  bottom: 24px; left: -32px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  box-shadow: var(--shadow-soft);
+}
+.hero-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--ink);
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--ink-soft);
+  max-width: 160px;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px; left: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.scroll-indicator span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute; top: -100%; left: 0;
+  width: 1px; height: 100%;
+  background: var(--accent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: calc(var(--nav-h) + 32px); min-height: auto; padding-bottom: 48px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-image-wrap { order: -1; max-width: 320px; margin: 0 auto; }
+  .hero-stat { left: -8px; bottom: 16px; }
+  .scroll-indicator { display: none; }
+}
+
+/* ════════════════════════════════════════
+   3. CLIENTS STRIP
+   ════════════════════════════════════════ */
+.clients {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+.clients-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-bottom: 28px;
+}
+.clients-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.client-logo {
+  height: 28px;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.4s, opacity 0.4s;
+}
+.client-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.client-fallback {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  display: none;
+}
+.client-item { display: flex; align-items: center; }
+.client-item .client-fallback { display: none; }
+.client-item.fallback img { display: none; }
+.client-item.fallback .client-fallback { display: block; }
+
+@media (max-width: 768px) {
+  .clients-row { gap: 28px; }
+  .client-logo { height: 22px; }
+}
+
+/* ════════════════════════════════════════
+   4. ABOUT
+   ════════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.about-lead {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.about-text p {
+  color: var(--ink-mid);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.pillar-cards { display: flex; flex-direction: column; gap: 16px; }
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pillar-card:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+.pillar-card h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.pillar-card h4::before {
+  content: '◈ ';
+  color: var(--accent);
+  font-size: 14px;
+}
+.pillar-card p {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ════════════════════════════════════════
+   5. EXPERIENCE
+   ════════════════════════════════════════ */
+.timeline { margin-top: 8px; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 140px 1px 1fr;
+  gap: 28px;
+  min-height: 80px;
+}
+.timeline-meta {
+  text-align: right;
+  padding-top: 24px;
+}
+.timeline-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.timeline-location {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.timeline-line {
+  width: 1px;
+  background: var(--border);
+  position: relative;
+}
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  top: 30px; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.timeline-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-accent);
+}
+.timeline-card h4 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+.timeline-card .company {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+.timeline-card ul {
+  list-style: none;
+}
+.timeline-card li {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.timeline-card li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .timeline-meta {
+    text-align: left;
+    padding-top: 0;
+    margin-bottom: 8px;
+  }
+  .timeline-line { display: none; }
+  .timeline-card { margin-bottom: 24px; }
+}
+
+/* ════════════════════════════════════════
+   6. FEATURED WORK
+   ════════════════════════════════════════ */
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.featured-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.featured-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-soft);
+}
+.featured-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.featured-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.featured-card > p {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.featured-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 16px;
+}
+.featured-tag {
+  font-size: 11px; font-weight: 500;
+  color: var(--ink-soft);
+  background: var(--bg-alt);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.featured-footer {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 4px;
+}
+.featured-footer a {
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+.featured-footer a:hover { opacity: 0.75; }
+
+@media (max-width: 768px) {
+  .featured-grid { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════
+   7. CAPABILITIES
+   ════════════════════════════════════════ */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cap-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+}
+.cap-card h4 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+.cap-card li {
+  font-size: 13px;
+  color: var(--ink-mid);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  list-style: none;
+  line-height: 1.45;
+}
+.cap-card li:last-child { border-bottom: none; }
+
+@media (max-width: 1024px) {
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .cap-grid { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════
+   8. AI CHAT DRAWER
+   ════════════════════════════════════════ */
+.chat-overlay {
+  position: fixed; inset: 0;
+  background: rgba(26,23,20,0.4);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+.chat-overlay.open { opacity: 1; pointer-events: auto; }
+
+.chat-drawer {
+  position: fixed; top: 0; right: 0;
+  width: min(440px, 100vw);
+  height: 100vh;
+  background: var(--bg);
+  z-index: 210;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  border-left: 1px solid var(--border);
+}
+.chat-drawer.open { transform: translateX(0); }
+
+.chat-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0;
+}
+.chat-header h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+}
+.chat-close {
+  font-size: 20px;
+  color: var(--ink-soft);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.chat-close:hover { background: var(--bg-alt); }
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.chat-msg {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  animation: msgIn 0.3s ease;
+}
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-msg.ai {
+  align-self: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 4px;
+  color: var(--ink-mid);
+}
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 14px 14px 4px 14px;
+}
+.chat-typing {
+  align-self: flex-start;
+  display: none;
+  gap: 4px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px 14px 14px 4px;
+}
+.chat-typing.show { display: flex; }
+.chat-typing span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  animation: typingDot 1.4s ease-in-out infinite;
+}
+.chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.chat-input-bar {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 8px;
+  flex-shrink: 0;
+  background: var(--bg);
+}
+.chat-input {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.25s;
+}
+.chat-input:focus { border-color: var(--accent); }
+.chat-send {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.chat-send:hover { background: #a8691f; }
+.chat-send svg { width: 18px; height: 18px; }
+
+/* ════════════════════════════════════════
+   9. CTA
+   ════════════════════════════════════════ */
+.cta-section {
+  text-align: center;
+  padding: 96px 24px;
+}
+.cta-eyebrow {
+  font-size: 13px; font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.cta-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(26px, 4vw, 36px);
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+.cta-section p {
+  color: rgba(255,255,255,0.55);
+  font-size: 15px;
+  max-width: 440px;
+  margin: 0 auto 32px;
+}
+.btn-accent {
+  display: inline-flex;
+  font-size: 14px; font-weight: 600;
+  color: var(--white);
+  background: var(--accent);
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-accent:hover { background: #a8691f; transform: translateY(-1px); }
+
+/* ════════════════════════════════════════
+   10. CONTACT
+   ════════════════════════════════════════ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.contact-icon {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.contact-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.contact-value {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════
+   11. FOOTER
+   ════════════════════════════════════════ */
+.footer {
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-copy {
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">AK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#featured">Featured</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="nav-chat-btn" onclick="toggleChat()">Chat with AI</button></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#featured" onclick="closeMobile()">Featured</a>
+  <a href="#capabilities" onclick="closeMobile()">Capabilities</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <button class="nav-chat-btn" onclick="toggleChat(); closeMobile();" style="width:fit-content;">Chat with AI</button>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <p class="hero-eyebrow">London · Digital Technology &amp; Business</p>
+        <h1>Build, <em>scale</em>, and lead what matters.</h1>
+        <p class="hero-sub">I'm Amir Khan — a PMP-certified Technology and Business Leader who builds revenue systems, scales digital products, and drives growth at the intersection of AI, SaaS, and emerging technology.</p>
+        <div class="cert-pills">
+          <span class="cert-pill">PMP® Certified</span>
+          <span class="cert-pill">PMI-CPMAI</span>
+          <span class="cert-pill">MSc Management (Birkbeck, University of London)</span>
+        </div>
+        <div class="hero-btns">
+          <a href="https://tally.so/r/WOpKEe" target="_blank" rel="noopener" class="btn-primary">Work/Build With Me</a>
+          <a href="#experience" class="btn-ghost">View Experience</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap reveal">
+        <div class="hero-image-fallback" id="heroImg">AK</div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6+</div>
+          <div class="hero-stat-label">Years building across IoT, Cloud &amp; AI-powered SaaS</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTS ═══ -->
+<section class="clients reveal">
+  <div class="container">
+    <p class="clients-label">Enterprise clients I've worked with</p>
+    <div class="clients-row" id="clientRow"></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section-pad" id="about">
+  <div class="container">
+    <div class="section-num reveal">01</div>
+    <h2 class="section-title reveal">About</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="about-lead">I build and scale digital technology businesses — from product conception through go-to-market execution.</p>
+        <p>I've built a £2M+ enterprise sales pipeline for an AI-powered SaaS platform, delivered Microsoft Azure cloud infrastructure for Fortune 100 clients, and taken an IoT product from conception to patent-pending market launch. My work spans the full arc from technical product development to commercial scaling.</p>
+        <p>I hold an MSc in Management from Birkbeck, University of London, a PMP® certification from PMI, and a growing stack of AI credentials including PMI-CPMAI and Anthropic's Claude certifications. I've published research on digital transformation and venture capital on SSRN, presented at AI Tinkerers London, and mentor international technology professionals through Birkbeck's Mentoring Pathways programme.</p>
+        <p>Currently co-building SupplyCorridor — a B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK and EU buyers, while advising on GTM strategy, investor positioning, and MVP architecture.</p>
+      </div>
+      <div class="pillar-cards reveal">
+        <div class="pillar-card">
+          <h4>Technology</h4>
+          <p>IoT, Cloud, SaaS, and AI platforms — translated into measurable business outcomes.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Strategy</h4>
+          <p>Revenue architecture, market entry, and GTM execution for digital products.</p>
+        </div>
+        <div class="pillar-card">
+          <h4>Execution</h4>
+          <p>Structured delivery from MVP to scale, backed by data and decision frameworks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section class="section-pad bg-alt" id="experience">
+  <div class="container">
+    <div class="section-num reveal">02</div>
+    <h2 class="section-title reveal">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div class="timeline-date">2024 – Present</div>
+          <div class="timeline-location">London</div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-card">
+          <h4>Founding Enterprise Sales Executive — SaaS</h4>
+          <div class="company">FutureMatch · Powered by Recruitics</div>
+          <ul>
+            <li>Built and executed the UK mid-market &amp; Enterprise go-to-market strategy for an AI-powered recruitment marketing SaaS platform, generating a £2M+ qualified enterprise pipeline</li>
+            <li>Initiated and progressed commercial relationships with JCB, Check Point, and Aston Martin through account-based outbound strategy</li>
+            <li>Recognised with "Transformation of the Year" and "The Human Google" awards in first year for establishing a new revenue function from zero</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div class="timeline-date">2023 – 2024</div>
+          <div class="timeline-location">London</div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-card">
+          <h4>Growth Strategist</h4>
+          <div class="company">Breakbottle</div>
+          <ul>
+            <li>Designed and executed the digital growth strategy — SEO, content marketing, and B2B partnership development for a D2C platform</li>
+            <li>Forged strategic partnerships with Sage and Imperial Business School</li>
+            <li>Built green marketing framework and brand positioning from the ground up</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div class="timeline-date">2021 – 2023</div>
+          <div class="timeline-location">Mumbai → London</div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-card">
+          <h4>Senior Cloud Business Analyst</h4>
+          <div class="company">IFI Techsolutions · Microsoft Azure Expert MSP</div>
+          <ul>
+            <li>Scaled the Managed Services division from 3 clients to 15+ enterprise accounts, growing the team from 1 to 15+ SRE engineers</li>
+            <li>Designed and developed a custom CRM and ITSM platform on Dynamics 365 and Azure, still in production use today</li>
+            <li>Led delivery of 5+ Azure cloud projects for public sector and enterprise clients, maintaining 99.95% SLA across 24/7 global operations</li>
+            <li>Closed one of the company's largest enterprise deals (Fortune 100 — L&amp;T)</li>
+            <li>Led Azure Expert MSP and OSS Database external audits</li>
+            <li>Fast-track promoted within 15 months; rated 5/5; awarded "Badge of Honour"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div class="timeline-date">2020 – 2021</div>
+          <div class="timeline-location">Mumbai</div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-card">
+          <h4>Founding Product Manager — IoT</h4>
+          <div class="company">Luminox Automation</div>
+          <ul>
+            <li>Managed the full product lifecycle of a patent-pending IoT smart home product from conception to market launch</li>
+            <li>Led the Amazon Alexa integration with the Luminox platform — defining the voice interaction model and driving end-to-end implementation</li>
+            <li>Oversaw development of iOS and Android mobile applications</li>
+            <li>Selected for Idea to Startup Lab 2020 pre-accelerator (ISB Hyderabad × Bocconi University, Milan)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div class="timeline-date">2019 – 2020</div>
+          <div class="timeline-location">Mumbai</div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-card">
+          <h4>Data Analyst</h4>
+          <div class="company">HUDL</div>
+          <ul>
+            <li>Delivered data analysis across 400+ matches with 98% quality consistency, supporting product and commercial decisions</li>
+            <li>Built analytical workflows for coaching strategy optimisation</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED WORK ═══ -->
+<section class="section-pad" id="featured">
+  <div class="container">
+    <div class="section-num reveal">03</div>
+    <h2 class="section-title reveal">Featured Work</h2>
+    <p class="section-intro reveal">Products built, research published, and recognition earned.</p>
+    <div class="featured-grid">
+
+      <div class="featured-card reveal">
+        <div class="featured-label">Venture · 2025</div>
+        <h3>SupplyCorridor</h3>
+        <p>B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK and EU buyers. Co-building the business from the ground up — investor strategy, MVP specification, full-stack architecture, and GTM execution.</p>
+        <div class="featured-tags">
+          <span class="featured-tag">B2B Platform</span>
+          <span class="featured-tag">AI</span>
+          <span class="featured-tag">India → UK/EU</span>
+          <span class="featured-tag">GTM</span>
+          <span class="featured-tag">Cross-Border Trade</span>
+        </div>
+        <div class="featured-footer"><a href="https://supplycorridor.com/" target="_blank" rel="noopener">Co-Builder &amp; Advisor →</a></div>
+      </div>
+
+      <div class="featured-card reveal">
+        <div class="featured-label">Publication · 2025</div>
+        <h3>Digital Transformation &amp; Venture Capital</h3>
+        <p>Research paper published on SSRN examining how digital transformation signals influence venture capital investment patterns and funding decisions in startup ecosystems.</p>
+        <div class="featured-tags">
+          <span class="featured-tag">Published Research</span>
+          <span class="featured-tag">Digital Transformation</span>
+          <span class="featured-tag">VC</span>
+          <span class="featured-tag">SSRN</span>
+        </div>
+        <div class="featured-footer"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6210800" target="_blank" rel="noopener">Read on SSRN →</a></div>
+      </div>
+
+      <div class="featured-card reveal">
+        <div class="featured-label">Press · August 2025</div>
+        <h3>From Mentee to Mentor</h3>
+        <p>Featured in Birkbeck University's alumni publication — documenting the journey from international MSc student mentored by Phill Collins (Mentor of the Year 2025) to active mentor for incoming technology professionals in the UK.</p>
+        <div class="featured-tags">
+          <span class="featured-tag">Birkbeck University</span>
+          <span class="featured-tag">Mentoring Pathways</span>
+          <span class="featured-tag">UK Tech Talent Pipeline</span>
+        </div>
+        <div class="featured-footer"><a href="https://www.bbk.ac.uk/news/from-mentee-to-mentor-birkbeck-graduates-journey-comes-full-circle" target="_blank" rel="noopener">Read Article →</a></div>
+      </div>
+
+      <div class="featured-card reveal">
+        <div class="featured-label">Talk · 2025</div>
+        <h3>The Non-Engineer's Claude Stack</h3>
+        <p>Invited talk at AI Tinkerers London — the UK's leading applied AI community — showing how business professionals can build real operational leverage using Claude, structured prompting, and agentic workflows.</p>
+        <div class="featured-tags">
+          <span class="featured-tag">AI Tinkerers London</span>
+          <span class="featured-tag">Claude</span>
+          <span class="featured-tag">Applied AI</span>
+          <span class="featured-tag">Prompt Engineering</span>
+        </div>
+        <div class="featured-footer">Invited Talk</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPABILITIES ═══ -->
+<section class="section-pad bg-alt" id="capabilities">
+  <div class="container">
+    <div class="section-num reveal">04</div>
+    <h2 class="section-title reveal">Capabilities</h2>
+    <p class="section-intro reveal">Technical fluency, commercial execution, and structured thinking — backed by formal credentials and shipped products.</p>
+    <div class="cap-grid">
+
+      <div class="cap-card reveal">
+        <h4>Technology</h4>
+        <ul>
+          <li>Azure cloud infrastructure</li>
+          <li>IoT product development</li>
+          <li>AI-powered SaaS platforms</li>
+          <li>Alexa/voice platform integration</li>
+          <li>AI tools &amp; agentic workflows</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <h4>Business &amp; Growth</h4>
+        <ul>
+          <li>Enterprise pipeline development</li>
+          <li>Revenue strategy</li>
+          <li>GTM execution</li>
+          <li>Cross-border market entry</li>
+          <li>B2B partnership architecture</li>
+          <li>Outbound systems design</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <h4>Data &amp; Analytics</h4>
+        <ul>
+          <li>Power BI</li>
+          <li>CRM (Dynamics 365, Zoho, HubSpot)</li>
+          <li>Pipeline analytics</li>
+          <li>ITSM platforms</li>
+          <li>Decision frameworks</li>
+        </ul>
+      </div>
+
+      <div class="cap-card reveal">
+        <h4>Credentials</h4>
+        <ul>
+          <li>PMP® (PMI)</li>
+          <li>PMI-CPMAI</li>
+          <li>Microsoft AI &amp; Azure Fundamentals</li>
+          <li>Anthropic Claude 101</li>
+          <li>AI Fluency</li>
+          <li>Claude Code in Action</li>
+          <li>CDBA</li>
+          <li>Generative AI for Project Managers</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="bg-dark cta-section">
+  <div class="cta-eyebrow">Let's build</div>
+  <h2>Ready to build something that matters?</h2>
+  <p>Open to build, scale, advise, and explore technology and business partnerships.</p>
+  <a href="https://tally.so/r/WOpKEe" target="_blank" rel="noopener" class="btn-accent">Get in Touch</a>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="section-pad bg-alt" id="contact">
+  <div class="container">
+    <div class="section-num reveal">05</div>
+    <h2 class="section-title reveal">Contact</h2>
+    <div class="contact-grid" style="margin-top:36px;">
+      <a href="mailto:amirkhanworks95@gmail.com" class="contact-card reveal">
+        <div class="contact-icon">✉</div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">amirkhanworks95@gmail.com</div>
+      </a>
+      <a href="https://www.linkedin.com/in/aaamirkhan/" target="_blank" rel="noopener" class="contact-card reveal">
+        <div class="contact-icon">in</div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">linkedin.com/in/aaamirkhan</div>
+      </a>
+      <a href="https://github.com/amirkhanworks" target="_blank" rel="noopener" class="contact-card reveal">
+        <div class="contact-icon">⌥</div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">github.com/amirkhanworks</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="bg-dark footer">
+  <div class="footer-name">Amir Khan</div>
+  <div class="footer-copy">© <span id="footerYear"></span> · London</div>
+</footer>
+
+<!-- ═══ AI CHAT DRAWER ═══ -->
+<div class="chat-overlay" id="chatOverlay" onclick="toggleChat()"></div>
+<div class="chat-drawer" id="chatDrawer">
+  <div class="chat-header">
+    <h3>Chat with Amir's AI</h3>
+    <button class="chat-close" onclick="toggleChat()" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg ai">Hi, I'm Amir's AI. Ask me anything about his work, experience, or how he can help you.</div>
+    <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
+  </div>
+  <div class="chat-input-bar">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Amir's experience..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ── Clients logos ── */
+const clients = [
+  { name: 'Larsen & Toubro', domain: 'larsentoubro.com', abbr: 'L&T' },
+  { name: 'Mahindra & Mahindra', domain: 'mahindra.com', abbr: 'M&M' },
+  { name: 'Sage', domain: 'sage.com', abbr: 'Sage' },
+  { name: 'JCB', domain: 'jcb.com', abbr: 'JCB' },
+  { name: 'Checkpoint', domain: 'checkpoint.com', abbr: 'CP' },
+  { name: 'Aston Martin', domain: 'astonmartin.com', abbr: 'AM' }
+];
+const clientRow = document.getElementById('clientRow');
+clients.forEach(c => {
+  const div = document.createElement('div');
+  div.className = 'client-item';
+  div.innerHTML = `<img class="client-logo" src="https://img.logo.dev/${c.domain}?token=pk_public&size=80&format=png" alt="${c.name}" onerror="this.parentElement.classList.add('fallback')"><span class="client-fallback">${c.abbr}</span>`;
+  clientRow.appendChild(div);
+});
+
+/* ── Scroll Reveal ── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── Sticky Nav ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ── Active Nav ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+}, { passive: true });
+
+/* ── Mobile Menu ── */
+function toggleMobile() {
+  document.querySelector('.hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile() {
+  document.querySelector('.hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* ── Footer Year ── */
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+/* ── AI Chat ── */
+const chatHistory = [];
+const AMIR_CONTEXT = `You are an AI assistant representing Amir Khan's professional portfolio. Amir is a London-based Technology and Business Leader applying for the UK Global Talent Visa under the Exceptional Promise route in Digital Technology. Answer questions about Amir's background, experience, skills, projects, and how he might help a potential client or collaborator. Be concise, warm, and professional.
+
+Here is Amir's background:
+
+ABOUT: Amir builds and scales digital technology businesses from product conception through go-to-market execution. He has built a £2M+ enterprise sales pipeline for an AI-powered SaaS platform, delivered Microsoft Azure cloud infrastructure for Fortune 100 clients, and taken an IoT product from conception to patent-pending market launch. He holds an MSc in Management from Birkbeck, University of London, PMP certification from PMI, and AI credentials including PMI-CPMAI and Anthropic Claude certifications. Published research on SSRN on digital transformation and venture capital. Presented at AI Tinkerers London. Mentors international tech professionals through Birkbeck. Currently co-building SupplyCorridor — a B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK/EU buyers.
+
+EXPERIENCE:
+- 2024–Present: Founding Enterprise Sales Executive (SaaS) at FutureMatch/Recruitics, London. Built UK mid-market & enterprise GTM strategy, £2M+ pipeline. Won "Transformation of the Year" and "The Human Google" awards.
+- 2023–2024: Growth Strategist at Breakbottle, London. Digital growth strategy, partnerships with Sage and Imperial Business School.
+- 2021–2023: Senior Cloud Business Analyst at IFI Techsolutions (Azure Expert MSP), Mumbai then London. Scaled from 3 to 15+ enterprise accounts, built CRM/ITSM on Dynamics 365/Azure, closed Fortune 100 deal (L&T). Fast-track promoted, 5/5 rating.
+- 2020–2021: Founding Product Manager (IoT) at Luminox Automation, Mumbai. Patent-pending IoT smart home product, Amazon Alexa integration. Selected for ISB Hyderabad × Bocconi pre-accelerator.
+- 2019–2020: Data Analyst at HUDL, Mumbai. 400+ match analysis, 98% quality consistency.
+
+FEATURED WORK:
+- SupplyCorridor: B2B AI cross-border trade platform (India→UK/EU). Co-Builder & Advisor.
+- Digital Transformation & VC: Published research paper on SSRN.
+- From Mentee to Mentor: Featured in Birkbeck University publication.
+- The Non-Engineer's Claude Stack: Invited talk at AI Tinkerers London.
+
+CAPABILITIES:
+Tech: Azure, IoT, AI SaaS, Alexa/voice, AI tools & agentic workflows.
+Business: Enterprise pipeline, revenue strategy, GTM, cross-border market entry, B2B partnerships, outbound systems.
+Data: Power BI, Dynamics 365/Zoho/HubSpot CRM, pipeline analytics, ITSM, decision frameworks.
+Credentials: PMP, PMI-CPMAI, Microsoft AI & Azure Fundamentals, Claude 101, AI Fluency, Claude Code in Action, CDBA, GenAI for PMs.
+
+CONTACT: amirkhanworks95@gmail.com | LinkedIn: linkedin.com/in/aaamirkhan | GitHub: github.com/amirkhanworks`;
+
+function toggleChat() {
+  const drawer = document.getElementById('chatDrawer');
+  const overlay = document.getElementById('chatOverlay');
+  const isOpen = drawer.classList.toggle('open');
+  overlay.classList.toggle('open', isOpen);
+  if (isOpen) {
+    document.getElementById('chatInput').focus();
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('chatDrawer').classList.contains('open')) toggleChat();
+});
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+
+  const msgs = document.getElementById('chatMessages');
+  const typing = document.getElementById('chatTyping');
+
+  // User bubble
+  const uDiv = document.createElement('div');
+  uDiv.className = 'chat-msg user';
+  uDiv.textContent = msg;
+  msgs.insertBefore(uDiv, typing);
+
+  chatHistory.push({ role: 'user', content: msg });
+  typing.classList.add('show');
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 500,
+        system: AMIR_CONTEXT,
+        messages: chatHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.map(b => b.text || '').join('') || 'Sorry, I couldn\'t process that. Please try again.';
+    chatHistory.push({ role: 'assistant', content: reply });
+
+    typing.classList.remove('show');
+    const aDiv = document.createElement('div');
+    aDiv.className = 'chat-msg ai';
+    aDiv.textContent = reply;
+    msgs.insertBefore(aDiv, typing);
+  } catch (err) {
+    typing.classList.remove('show');
+    const eDiv = document.createElement('div');
+    eDiv.className = 'chat-msg ai';
+    eDiv.textContent = 'Sorry, I\'m having trouble connecting right now. You can reach Amir directly at amirkhanworks95@gmail.com.';
+    msgs.insertBefore(eDiv, typing);
+  }
+  msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
+</body>
+</html>
