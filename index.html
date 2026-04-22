@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amir Khan — Technology & Business Leader</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231A1714'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='28' font-weight='bold' fill='%23C17B2E' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Amir Khan is a London-based Technology and Business Leader who builds revenue systems, scales digital products, and drives growth at the intersection of AI, SaaS, and emerging technology.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,14 +193,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ════════════════════════════════════════ */
 .hero {
   min-height: calc(100vh - var(--nav-h));
-  padding-top: calc(var(--nav-h) + 48px);
+  padding-top: calc(var(--nav-h) + 64px);
   display: flex; align-items: center;
 }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
-  gap: 56px;
-  align-items: center;
+.hero-content {
+  max-width: 720px;
 }
 .hero-eyebrow {
   font-size: 13px; font-weight: 500;
@@ -210,9 +208,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero h1 {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(34px, 5vw, 52px);
-  line-height: 1.15;
-  margin-bottom: 20px;
+  font-size: clamp(36px, 5.5vw, 56px);
+  line-height: 1.12;
+  margin-bottom: 24px;
   letter-spacing: -0.01em;
 }
 .hero h1 em {
@@ -221,10 +219,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero-sub {
   color: var(--ink-mid);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.7;
-  max-width: 520px;
-  margin-bottom: 24px;
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+.hero-stats-inline {
+  margin-bottom: 28px;
+  display: flex; gap: 16px;
+}
+.hero-stat-inline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.hero-stat-inline .hero-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--ink);
+}
+.hero-stat-inline .hero-stat-label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 180px;
+  line-height: 1.35;
 }
 .cert-pills {
   display: flex; flex-wrap: wrap; gap: 8px;
@@ -264,56 +287,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
 
-/* Hero image */
-.hero-image-wrap {
-  position: relative;
-}
-.hero-image {
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: var(--radius);
-  object-fit: cover;
-  background: var(--bg-alt);
-}
-.hero-image-fallback {
-  width: 100%;
-  aspect-ratio: 4/5;
-  border-radius: var(--radius);
-  background: linear-gradient(145deg, var(--accent-light), var(--bg-alt));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif;
-  font-size: 72px;
-  color: var(--accent);
-  opacity: 0.6;
-}
-.hero-stat {
-  position: absolute;
-  bottom: 24px; left: -32px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 22px;
-  box-shadow: var(--shadow-soft);
-}
-.hero-stat-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  line-height: 1;
-  color: var(--ink);
-}
-.hero-stat-label {
-  font-size: 12px;
-  color: var(--ink-soft);
-  max-width: 160px;
-  margin-top: 4px;
-  line-height: 1.4;
-}
-
 /* Scroll indicator */
 .scroll-indicator {
-  position: absolute;
-  bottom: 32px; left: 24px;
   display: flex; align-items: center; gap: 12px;
+  margin-top: 48px;
 }
 .scroll-indicator span {
   font-size: 11px;
@@ -342,9 +319,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 @media (max-width: 768px) {
   .hero { padding-top: calc(var(--nav-h) + 32px); min-height: auto; padding-bottom: 48px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-image-wrap { order: -1; max-width: 320px; margin: 0 auto; }
-  .hero-stat { left: -8px; bottom: 16px; }
   .scroll-indicator { display: none; }
 }
 
@@ -373,31 +347,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 48px;
   flex-wrap: wrap;
 }
-.client-logo {
-  height: 28px;
-  filter: grayscale(100%);
-  opacity: 0.55;
-  transition: filter 0.4s, opacity 0.4s;
-}
-.client-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-.client-fallback {
-  font-size: 13px;
+.client-name {
+  font-size: 14px;
   font-weight: 600;
   color: var(--ink-soft);
-  letter-spacing: 0.04em;
-  display: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: color 0.3s;
 }
-.client-item { display: flex; align-items: center; }
-.client-item .client-fallback { display: none; }
-.client-item.fallback img { display: none; }
-.client-item.fallback .client-fallback { display: block; }
+.client-name:hover {
+  color: var(--ink);
+}
 
 @media (max-width: 768px) {
-  .clients-row { gap: 28px; }
-  .client-logo { height: 22px; }
+  .clients-row { gap: 20px; }
+  .client-name { font-size: 13px; }
 }
 
 /* ════════════════════════════════════════
@@ -893,14 +857,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 <!-- ═══ NAV ═══ -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">AK</a>
+  <a href="#" class="nav-logo">Amir Khan</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#featured">Featured</a></li>
     <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><button class="nav-chat-btn" onclick="toggleChat()">Chat with AI</button></li>
   </ul>
   <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -913,17 +876,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <a href="#featured" onclick="closeMobile()">Featured</a>
   <a href="#capabilities" onclick="closeMobile()">Capabilities</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
-  <button class="nav-chat-btn" onclick="toggleChat(); closeMobile();" style="width:fit-content;">Chat with AI</button>
 </div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div class="reveal">
+    <div class="hero-content reveal">
         <p class="hero-eyebrow">London · Digital Technology &amp; Business</p>
         <h1>Build, <em>scale</em>, and lead what matters.</h1>
-        <p class="hero-sub">I'm Amir Khan - a PMP-certified Technology and Business Leader who builds revenue systems, scales digital products, and drives growth at the intersection of AI, SaaS, and emerging technology.</p>
+        <p class="hero-sub">I'm Amir Khan — a PMP-certified Technology and Business Leader who builds revenue systems, scales digital products, and drives growth at the intersection of AI, SaaS, and emerging technology.</p>
+        <div class="hero-stats-inline">
+          <div class="hero-stat-inline">
+            <span class="hero-stat-num">6+</span>
+            <span class="hero-stat-label">Years building across IoT, Cloud &amp; AI-powered SaaS</span>
+          </div>
+        </div>
         <div class="cert-pills">
           <span class="cert-pill">PMP® Certified</span>
           <span class="cert-pill">PMI-CPMAI</span>
@@ -933,14 +900,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <a href="https://tally.so/r/WOpKEe" target="_blank" rel="noopener" class="btn-primary">Work/Build With Me</a>
           <a href="#experience" class="btn-ghost">View Experience</a>
         </div>
-      </div>
-      <div class="hero-image-wrap reveal">
-        <div class="hero-image-fallback" id="heroImg">AK</div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">6+</div>
-          <div class="hero-stat-label">Years building across IoT, Cloud &amp; AI-powered SaaS</div>
-        </div>
-      </div>
     </div>
     <div class="scroll-indicator">
       <span>Scroll</span>
@@ -964,15 +923,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <h2 class="section-title reveal">About</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p class="about-lead">I build and scale digital technology businesses - from product conception through go-to-market execution.</p>
+        <p class="about-lead">I build and scale digital technology businesses — from product conception through go-to-market execution.</p>
         <p>I've built a £2M+ enterprise sales pipeline for an AI-powered SaaS platform, delivered Microsoft Azure cloud infrastructure for Fortune 100 clients, and taken an IoT product from conception to patent-pending market launch. My work spans the full arc from technical product development to commercial scaling.</p>
         <p>I hold an MSc in Management from Birkbeck, University of London, a PMP® certification from PMI, and a growing stack of AI credentials including PMI-CPMAI and Anthropic's Claude certifications. I've published research on digital transformation and venture capital on SSRN, presented at AI Tinkerers London, and mentor international technology professionals through Birkbeck's Mentoring Pathways programme.</p>
-        <p>Currently co-building SupplyCorridor - a B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK and EU buyers, while advising on GTM strategy, investor positioning, and MVP architecture.</p>
+        <p>Currently co-building SupplyCorridor — a B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK and EU buyers, while advising on GTM strategy, investor positioning, and MVP architecture.</p>
       </div>
       <div class="pillar-cards reveal">
         <div class="pillar-card">
           <h4>Technology</h4>
-          <p>IoT, Cloud, SaaS, and AI platforms - translated into measurable business outcomes.</p>
+          <p>IoT, Cloud, SaaS, and AI platforms — translated into measurable business outcomes.</p>
         </div>
         <div class="pillar-card">
           <h4>Strategy</h4>
@@ -1021,7 +980,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <h4>Growth Strategist</h4>
           <div class="company">Breakbottle</div>
           <ul>
-            <li>Designed and executed the digital growth strategy - B2B partnership development, SEO, and content marketing for a D2C platform</li>
+            <li>Designed and executed the digital growth strategy — SEO, content marketing, and B2B partnership development for a D2C platform</li>
             <li>Forged strategic partnerships with Sage and Imperial Business School</li>
             <li>Built green marketing framework and brand positioning from the ground up</li>
           </ul>
@@ -1055,7 +1014,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         </div>
         <div class="timeline-line"></div>
         <div class="timeline-card">
-          <h4>Founding IoT Product Manager</h4>
+          <h4>Founding Product Manager — IoT</h4>
           <div class="company">Luminox Automation</div>
           <ul>
             <li>Managed the full product lifecycle of a patent-pending IoT smart home product from conception to market launch</li>
@@ -1249,41 +1208,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="footer-copy">© <span id="footerYear"></span> · London</div>
 </footer>
 
-<!-- ═══ AI CHAT DRAWER ═══ -->
-<div class="chat-overlay" id="chatOverlay" onclick="toggleChat()"></div>
-<div class="chat-drawer" id="chatDrawer">
-  <div class="chat-header">
-    <h3>Chat with Amir's AI</h3>
-    <button class="chat-close" onclick="toggleChat()" aria-label="Close chat">✕</button>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg ai">Hi, I'm Amir's AI. Ask me anything about his work, experience, or how he can help you.</div>
-    <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
-  </div>
-  <div class="chat-input-bar">
-    <input class="chat-input" id="chatInput" type="text" placeholder="Ask about Amir's experience..." onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" onclick="sendChat()" aria-label="Send">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
-  </div>
-</div>
 
 <script>
 /* ── Clients logos ── */
-const clients = [
-  { name: 'Larsen & Toubro', domain: 'larsentoubro.com', abbr: 'Larsen & Toubro' },
-  { name: 'Mahindra & Mahindra', domain: 'mahindra.com', abbr: 'Mahindra & Mahindra' },
-  { name: 'Sage', domain: 'sage.com', abbr: 'Sage' },
-  { name: 'JCB', domain: 'jcb.com', abbr: 'JCB' },
-  { name: 'Checkpoint', domain: 'checkpoint.com', abbr: 'Checkpoint' },
-  { name: 'Aston Martin', domain: 'astonmartin.com', abbr: 'Aston Martin' }
-];
+const clients = ['Larsen & Toubro', 'Mahindra & Mahindra', 'Sage', 'JCB', 'Check Point', 'Aston Martin'];
 const clientRow = document.getElementById('clientRow');
-clients.forEach(c => {
-  const div = document.createElement('div');
-  div.className = 'client-item';
-  div.innerHTML = `<img class="client-logo" src="https://img.logo.dev/${c.domain}?token=pk_public&size=80&format=png" alt="${c.name}" onerror="this.parentElement.classList.add('fallback')"><span class="client-fallback">${c.abbr}</span>`;
-  clientRow.appendChild(div);
+clients.forEach(name => {
+  const span = document.createElement('span');
+  span.className = 'client-name';
+  span.textContent = name;
+  clientRow.appendChild(span);
 });
 
 /* ── Scroll Reveal ── */
@@ -1319,101 +1253,6 @@ function closeMobile() {
 
 /* ── Footer Year ── */
 document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-/* ── AI Chat ── */
-const chatHistory = [];
-const AMIR_CONTEXT = `You are an AI assistant representing Amir Khan's professional portfolio. Amir is a London-based Technology and Business Leader applying for the UK Global Talent Visa under the Exceptional Promise route in Digital Technology. Answer questions about Amir's background, experience, skills, projects, and how he might help a potential client or collaborator. Be concise, warm, and professional.
-
-Here is Amir's background:
-
-ABOUT: Amir builds and scales digital technology businesses from product conception through go-to-market execution. He has built a £2M+ enterprise sales pipeline for an AI-powered SaaS platform, delivered Microsoft Azure cloud infrastructure for Fortune 100 clients, and taken an IoT product from conception to patent-pending market launch. He holds an MSc in Management from Birkbeck, University of London, PMP certification from PMI, and AI credentials including PMI-CPMAI and Anthropic Claude certifications. Published research on SSRN on digital transformation and venture capital. Presented at AI Tinkerers London. Mentors international tech professionals through Birkbeck. Currently co-building SupplyCorridor — a B2B AI-powered cross-border trade execution platform connecting Indian suppliers with UK/EU buyers.
-
-EXPERIENCE:
-- 2024–Present: Founding Enterprise Sales Executive (SaaS) at FutureMatch/Recruitics, London. Built UK mid-market & enterprise GTM strategy, £2M+ pipeline. Won "Transformation of the Year" and "The Human Google" awards.
-- 2023–2024: Growth Strategist at Breakbottle, London. Digital growth strategy, partnerships with Sage and Imperial Business School.
-- 2021–2023: Senior Cloud Business Analyst at IFI Techsolutions (Azure Expert MSP), Mumbai then London. Scaled from 3 to 15+ enterprise accounts, built CRM/ITSM on Dynamics 365/Azure, closed Fortune 100 deal (L&T). Fast-track promoted, 5/5 rating.
-- 2020–2021: Founding Product Manager (IoT) at Luminox Automation, Mumbai. Patent-pending IoT smart home product, Amazon Alexa integration. Selected for ISB Hyderabad × Bocconi pre-accelerator.
-- 2019–2020: Data Analyst at HUDL, Mumbai. 400+ match analysis, 98% quality consistency.
-
-FEATURED WORK:
-- SupplyCorridor: B2B AI cross-border trade platform (India→UK/EU). Co-Builder & Advisor.
-- Digital Transformation & VC: Published research paper on SSRN.
-- From Mentee to Mentor: Featured in Birkbeck University publication.
-- The Non-Engineer's Claude Stack: Invited talk at AI Tinkerers London.
-
-CAPABILITIES:
-Tech: Azure, IoT, AI SaaS, Alexa/voice, AI tools & agentic workflows.
-Business: Enterprise pipeline, revenue strategy, GTM, cross-border market entry, B2B partnerships, outbound systems.
-Data: Power BI, Dynamics 365/Zoho/HubSpot CRM, pipeline analytics, ITSM, decision frameworks.
-Credentials: PMP, PMI-CPMAI, Microsoft AI & Azure Fundamentals, Claude 101, AI Fluency, Claude Code in Action, CDBA, GenAI for PMs.
-
-CONTACT: amirkhanworks95@gmail.com | LinkedIn: linkedin.com/in/aaamirkhan | GitHub: github.com/amirkhanworks`;
-
-function toggleChat() {
-  const drawer = document.getElementById('chatDrawer');
-  const overlay = document.getElementById('chatOverlay');
-  const isOpen = drawer.classList.toggle('open');
-  overlay.classList.toggle('open', isOpen);
-  if (isOpen) {
-    document.getElementById('chatInput').focus();
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && document.getElementById('chatDrawer').classList.contains('open')) toggleChat();
-});
-
-async function sendChat() {
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if (!msg) return;
-  input.value = '';
-
-  const msgs = document.getElementById('chatMessages');
-  const typing = document.getElementById('chatTyping');
-
-  // User bubble
-  const uDiv = document.createElement('div');
-  uDiv.className = 'chat-msg user';
-  uDiv.textContent = msg;
-  msgs.insertBefore(uDiv, typing);
-
-  chatHistory.push({ role: 'user', content: msg });
-  typing.classList.add('show');
-  msgs.scrollTop = msgs.scrollHeight;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 500,
-        system: AMIR_CONTEXT,
-        messages: chatHistory
-      })
-    });
-    const data = await res.json();
-    const reply = data.content?.map(b => b.text || '').join('') || 'Sorry, I couldn\'t process that. Please try again.';
-    chatHistory.push({ role: 'assistant', content: reply });
-
-    typing.classList.remove('show');
-    const aDiv = document.createElement('div');
-    aDiv.className = 'chat-msg ai';
-    aDiv.textContent = reply;
-    msgs.insertBefore(aDiv, typing);
-  } catch (err) {
-    typing.classList.remove('show');
-    const eDiv = document.createElement('div');
-    eDiv.className = 'chat-msg ai';
-    eDiv.textContent = 'Sorry, I\'m having trouble connecting right now. You can reach Amir directly at amirkhanworks95@gmail.com.';
-    msgs.insertBefore(eDiv, typing);
-  }
-  msgs.scrollTop = msgs.scrollHeight;
-}
 </script>
 </body>
 </html>
